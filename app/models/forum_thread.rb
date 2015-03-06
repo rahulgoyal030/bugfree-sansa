@@ -14,6 +14,6 @@ class ForumThread < ActiveRecord::Base
 	belongs_to :user
 	has_many :forum_posts
 
-	accept_nested_attributes_for :forum_posts
-	validate_associated :forum_posts
+	accepts_nested_attributes_for :forum_posts
+	validates_associated :forum_posts
 end

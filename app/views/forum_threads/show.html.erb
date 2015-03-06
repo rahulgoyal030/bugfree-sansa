@@ -1,9 +1,16 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+<h1><%= @forum_thread.subject %></h1>
+  <p class= "text-muted">Created by <%= @forum_thread.user.email %><p>
 
-<p>
-  <strong>Subject:</strong>
-  <%= @forum_thread.subject %>
-</p>
 
+  <%= render @forum_thread.forum_posts %>
+
+<hr/>
+
+
+<%= render partial: 'forum_posts/form' %>
 <%= link_to 'Edit', edit_forum_thread_path(@forum_thread) %> |
+<%= link_to 'Delete', forum_thread_path(@forum_thread), method: :delete, data: { confirm: "Are you Sure?" }%> |
 <%= link_to 'Back', forum_threads_path %>
+
+</div>
