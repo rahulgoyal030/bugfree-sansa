@@ -1,0 +1,5 @@
+<%= div_for forum_post do%>
+  <%= forum_post.body %>
+  <p class="text-muted">Posted by <%= forum_post.user.email if forum_post.user.present?%></p>
+
+<% end %>
