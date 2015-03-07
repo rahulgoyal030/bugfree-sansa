@@ -110,6 +110,7 @@ GEM
     octokit (3.8.0)
       sawyer (~> 0.6.0, >= 0.5.3)
     orm_adapter (0.5.0)
+    pg (0.18.1)
     puma (2.11.1)
       rack (>= 1.1, < 2.0)
     rack (1.6.0)
@@ -208,6 +209,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   octokit (~> 3.0)
+  pg
   puma
   rails (= 4.2.0)
   rails_layout
