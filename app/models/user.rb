@@ -28,7 +28,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :forum_posts
+  has_many :forum_posts,  dependent: :destroy
   has_many :forum_threads
-         
+
+  has_many :owners, through: :forum_threads
+
 end

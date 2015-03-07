@@ -57,3 +57,9 @@ gem 'autoprefixer-rails'
 gem 'rails_layout'
 
 gem 'puma'
+gem 'sucker_punch'
+
+#github api
+gem "octokit", "~> 3.0"
+
+gem 'dalli'

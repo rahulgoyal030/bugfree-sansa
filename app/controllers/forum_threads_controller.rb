@@ -4,6 +4,9 @@ class ForumThreadsController < ApplicationController
 
   def index
     #@q = ForumThread.search(params[:q])
+    #@user = Octokit.user 'therise3107'
+    #@issues = Octokit.issues 'rails/rails', :per_page => 100
+    #@issues.concat Octokit.last_response.rels[:next].get.data
     @forum_threads = ForumThread.all#@q.result(distinct: true)
   end
 
@@ -18,7 +21,8 @@ class ForumThreadsController < ApplicationController
   end
 
   def create
-    @forum_thread = current_user.forum_threads.new forum_thread_params
+    @forum_thread = ForumThread.new forum_thread_params
+    @forum_thread.owner = current_user
     @forum_thread.forum_posts.last.user_id = current_user.id
     if @forum_thread.save
       redirect_to forum_thread_path(@forum_thread)
@@ -27,10 +31,10 @@ class ForumThreadsController < ApplicationController
     end
   end
 
-#  def update
-#    @forum_thread.update(forum_thread_params)
-#    redirect_to @forum_thread
-#  end
+  def update
+    @forum_thread.update(params.require(:forum_thread).permit(:subject))
+    redirect_to @forum_thread
+  end
   def destroy
     @forum_thread.destroy
     render action: :index

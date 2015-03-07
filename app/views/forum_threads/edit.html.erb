@@ -1,6 +1,14 @@
 <h1>Editing Forum Thread</h1>
 
-<%= render 'form' %>
+<%= form_for(@forum_thread) do |f| %>
+	<div class="forum-group">
+    <%= f.text_field :subject, placeholder: "Subject",autofocus: true ,class: "form-control"%>
+  </div>
+  <br>
+  <div class="form-group pull-right">
+    <%= f.submit class: "btn btn-primary"%>
+  </div>
+<% end %>
 
-<%= link_to 'Show', @forum_thread %> |
-<%= link_to 'Back', forum_threads_path %>
+<%= link_to 'Show', @forum_thread, class: "btn btn-info btn-sm" %>|
+<%= link_to 'Back', forum_threads_path, class: "btn btn-warning btn-sm" %>

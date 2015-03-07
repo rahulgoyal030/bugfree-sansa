@@ -1,18 +1,25 @@
-<p id="notice"><%= notice %></p>
-<div class="container-fluid well">
-
-<h1>Listing Forum Threads</h1>
-
-<% @forum_threads.each do |forum_thread|%>
-  <div class="row ">
-    <p class="brand"><%=link_to forum_thread.subject, forum_thread %></p>
-    <p class="text-muted pull-right">Created by <%= forum_thread.user.email %></p>
-  </div>
-<% end %>
-<br>
-
+<div class="container">
+<div class="col-md-5 col-md-offset-4">
+<h1>Forum Threads</h1>
+</div>
 </div>
 
-<%= link_to 'New Forum thread', new_forum_thread_path %>
-
 <div class="container">
+<% @forum_threads.each do |forum_thread|%>
+
+  <div class="row ">
+    <h3 class="brand"><%=link_to forum_thread.subject, forum_thread %> </h3>
+    <p class="text-muted pull-right">Created by <%= forum_thread.owner.email %></p>
+  </div>
+<hr/>
+<% end %>
+
+<br>
+</div>
+<br>
+<div class="pull-right">
+  <%= link_to 'New Forum', new_forum_thread_path, class: 'button button-xs' %>
+</div>
+
+
+  

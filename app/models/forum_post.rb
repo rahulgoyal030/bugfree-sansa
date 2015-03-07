@@ -13,4 +13,14 @@
 class ForumPost < ActiveRecord::Base
 	belongs_to :forum_thread
 	belongs_to :user
+
+	validates :body, presence: :true
+
+	def send_notification!
+		users = forum_thread.users.uniq - [user]
+		users.each do |user|
+			Mailer.send_notifications(user, self).deliver_later
+		end
+	end
+
 end
