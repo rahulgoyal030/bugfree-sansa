@@ -1,7 +1,7 @@
 class ForumThreadsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_forum_thread, except: [:index, :new, :create]
-
+  before_action :own_auth, only: [:update, :edit, :destroy]
   def index
     #@q = ForumThread.search(params[:q])
     #@user = Octokit.user 'therise3107'
@@ -48,5 +48,10 @@ class ForumThreadsController < ApplicationController
 
     def forum_thread_params
       params.require(:forum_thread).permit(:subject, forum_posts_attributes: [:body])
+    end
+    def own_auth
+      if current_user != ForumThread.find(params[:id]).owner
+        redirect_to forum_thread_path(@forum_thread), notice: "You cannot update someone else's forum_thread"
+      end
     end
 end
