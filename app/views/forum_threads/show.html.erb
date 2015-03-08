@@ -1,13 +1,12 @@
-<div class="container-fluid">
-<h1><%= @forum_thread.subject %></h1>
-  <p class= "text-muted">Created by <%= @forum_thread.owner.email %><p>
-
-
+<div class="container">
+<h1 class="text-center"><%= @forum_thread.subject %></h1>
+<p class= "text-muted text-center">Created by <%= @forum_thread.owner.email %></p>
+<div class="col-md-sm-10">
   <%= render @forum_thread.forum_posts %>
 
 <hr/>
 
-
+</div>
 <%= render partial: 'forum_posts/form' %>
 <%= link_to 'Edit', edit_forum_thread_path(@forum_thread) %> |
 <%= link_to 'Delete', forum_thread_path(@forum_thread), method: :delete, data: { confirm: "Are you Sure?" }%> |

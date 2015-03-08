@@ -67,3 +67,8 @@ gem 'dalli'
 gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.2'
 #local_time gem
 gem 'local_time'
+
+gem 'html-pipeline'
+gem 'gemoji'
+gem 'github-markdown', '~> 0.6.8'
+gem 'sanitize', '~> 3.1.2'
