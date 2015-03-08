@@ -12,7 +12,6 @@ class ForumThreadsController < ApplicationController
   end
 
   def show
-    @pq = ForumThread.ransack(params[:q])
     @forum_post = ForumPost.new
     
   end

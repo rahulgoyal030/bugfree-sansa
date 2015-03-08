@@ -65,3 +65,5 @@ gem "octokit", "~> 3.0"
 
 gem 'dalli'
 gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.2'
+#local_time gem
+gem 'local_time'
