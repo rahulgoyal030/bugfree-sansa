@@ -64,3 +64,4 @@ gem 'sucker_punch'
 gem "octokit", "~> 3.0"
 
 gem 'dalli'
+gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.2'

@@ -1,5 +1,5 @@
 class ForumThreads::ForumPostsController < ApplicationController
-  before_action :set_forum_thread, only: [:show, :edit, :update, :destroy]
+  #before_action :set_forum_thread, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   # GET /forum_posts
   # GET /forum_posts.json
@@ -15,7 +15,14 @@ class ForumThreads::ForumPostsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
+    @forum_thread = ForumThread.find(params[:forum_thread_id])
+    @forum_post = @forum_thread.forum_post(params[:id])
+    @forum_post.update(set_post_params)
+    redirect_to forum_thread_path(@forum_thread,anchor: "forum_post_#{@forum_post.id}"), notice: "Updated the Post"
 
   end
 

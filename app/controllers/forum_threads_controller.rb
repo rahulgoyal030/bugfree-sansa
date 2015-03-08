@@ -1,17 +1,19 @@
 class ForumThreadsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_forum_thread, except: [:index, :new, :create]
+  before_action :set_forum_thread, except: [:index, :new, :create,:update]
   before_action :own_auth, only: [:update, :edit, :destroy]
   def index
     #@q = ForumThread.search(params[:q])
     #@user = Octokit.user 'therise3107'
     #@issues = Octokit.issues 'rails/rails', :per_page => 100
     #@issues.concat Octokit.last_response.rels[:next].get.data
-    @forum_threads = ForumThread.all#@q.result(distinct: true)
+    @q = ForumThread.search(params[:q])
+    @forum_threads = @q.result(distinct: true)#@q.result(distinct: true)
   end
 
   def show
     @forum_post = ForumPost.new
+    
   end
 
   def new
@@ -36,6 +38,7 @@ class ForumThreadsController < ApplicationController
     redirect_to @forum_thread
   end
   def destroy
+    @forum_thread = ForumThread.find(params[:id])
     @forum_thread.destroy
     render action: :index
   end

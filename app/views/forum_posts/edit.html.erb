@@ -1,6 +1,12 @@
-<h1>Editing Forum Post</h1>
 
-<%= render 'form' %>
+<% render @form %>
 
-<%= link_to 'Show', @forum_post %> |
-<%= link_to 'Back', forum_posts_path %>
+
+
+
+<div class="navbar-form navbar-right">
+      <%= search_form_for @q, html: {class: "form-inline"} do |f| %>
+        <%= f.search_field :subject_cont,placeholder: 'search...', class: 'form-control'  %>
+  <% end %>
+
+
