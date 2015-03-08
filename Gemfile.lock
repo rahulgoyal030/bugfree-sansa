@@ -108,6 +108,8 @@ GEM
       activesupport (>= 2)
       nokogiri (~> 1.4)
     i18n (0.7.0)
+    intercom-rails (0.2.27)
+      activesupport (> 3.0)
     jbuilder (2.2.9)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -240,6 +242,7 @@ DEPENDENCIES
   gemoji
   github-markdown (~> 0.6.8)
   html-pipeline
+  intercom-rails
   jbuilder (~> 2.0)
   jquery-rails
   local_time

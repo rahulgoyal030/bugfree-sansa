@@ -74,3 +74,5 @@ gem 'github-markdown', '~> 0.6.8'
 gem 'sanitize', '~> 3.1.2'
 
 gem "figaro"
+
+gem 'intercom-rails'
