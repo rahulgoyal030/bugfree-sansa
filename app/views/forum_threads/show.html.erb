@@ -1,6 +1,11 @@
 <div class="container">
 <h1 class="text-center"><%= @forum_thread.subject %></h1>
-<p class= "text-muted text-center">Created by <%= @forum_thread.owner.email %></p>
+<p class= "text-muted text-center">Created by 
+	<% if @forum_thread.owner.username.present? %>
+    	<%= @forum_thread.owner.username %></p>
+    <% else %>
+    	<%= @forum_thread.owner.email %></p>
+    <% end %></p>
 <div class="col-md-sm-10">
   <%= render @forum_thread.forum_posts %>
 

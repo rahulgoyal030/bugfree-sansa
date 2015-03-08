@@ -41,4 +41,15 @@ Rails.application.configure do
 
   config.active_job.queue_adapter = :sucker_punch
   config.action_mailer.default_url_options = { host: '127.0.0.1' }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  :user_name => ENV["NF_SENDGRID_USERNAME"],
+  :password => ENV["NF_SENDGRID_PASSWORD"],
+  :domain => ENV["NF_SENDGRID_DOMAIN"],
+  :address => 'smtp.sendgrid.net',
+  :port => 587,
+  :authentication => :plain,
+  :enable_starttls_auto => true
+}
 end

@@ -22,5 +22,10 @@ module Forum2
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    #setting up the emoji
+    config.assets.paths << Emoji.images_path
+    #precompiling the emojis to the public folder
+    config.assets.precompile << "emoji/**/*.png"
+
   end
 end

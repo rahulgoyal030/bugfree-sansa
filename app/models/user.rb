@@ -15,6 +15,7 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime
 #  updated_at             :datetime
+#  username               :string
 #
 # Indexes
 #
@@ -27,10 +28,13 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  validates :username, presence: true, uniqueness: { case_sensitive: false},
+  					 length: { in: 3..9 }
 
   has_many :forum_posts,  dependent: :destroy
   has_many :forum_threads
 
   has_many :owners, through: :forum_threads
+
 
 end
