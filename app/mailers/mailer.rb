@@ -1,4 +1,6 @@
-class Mailer < ApplicationMailer
+class Mailer < ActionMailer::Base
+  default from: "killdevdark@gmail.com"
+
   def send_notifications(user, forum_post)
     @user = user
     @forum_post = forum_post

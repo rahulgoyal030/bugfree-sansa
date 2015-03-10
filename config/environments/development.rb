@@ -14,7 +14,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -40,16 +40,7 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.active_job.queue_adapter = :sucker_punch
-  config.action_mailer.default_url_options = { host: '127.0.0.1' }
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-  :user_name => ENV["NF_SENDGRID_USERNAME"],
-  :password => ENV["NF_SENDGRID_PASSWORD"],
-  :domain => ENV["NF_SENDGRID_DOMAIN"],
-  :address => 'smtp.sendgrid.net',
-  :port => 587,
-  :authentication => :plain,
-  :enable_starttls_auto => true
-}
+
 end
