@@ -53,8 +53,8 @@ class ForumThreadsController < ApplicationController
       params.require(:forum_thread).permit(:subject, forum_posts_attributes: [:body])
     end
     def own_auth
-      if current_user != ForumThread.find(params[:id]).owner
-        redirect_to forum_thread_path(@forum_thread), notice: "You cannot update someone else's forum_thread"
+      if !current_user.admin? && current_user != Post.find(params[:id]).user
+        redirect_to root_path, notice: "You cannot do this"
       end
     end
 end
